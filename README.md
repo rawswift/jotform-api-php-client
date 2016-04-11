@@ -91,6 +91,8 @@ Here's another example for creating a form:
         echo $e->getMessage() . "\n";
     }
 
+See [examples](https://github.com/rawswift/jotform-api-php-client/tree/master/examples) folder for more sample scripts.
+
 ## License
 
 Licensed under the [MIT license](http://www.opensource.org/licenses/mit-license.php)
