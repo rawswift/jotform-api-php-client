@@ -49,7 +49,7 @@ try {
             'html' => 'false'
         ]
     ];
-    $response = $form->create($myForm);
+    $response = $form->createForm($myForm);
     print_r($response);
 } catch (\JotForm\Exception\ClientException $e) {
     echo $e->getMessage() . "\n";

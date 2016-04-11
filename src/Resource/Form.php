@@ -30,7 +30,7 @@ class Form
      * @return Object
      * @throws Exception \JotForm\Exception\ClientException
      */
-    public function create($formProperties = [])
+    public function createForm($formProperties = [])
     {
         // Construct request
         $request = new \JotForm\Request();
