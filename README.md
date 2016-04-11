@@ -27,69 +27,79 @@ After installing, simply include the Composer's autoloader (inside your script):
 
 A simple example to get user's information:
 
-    require 'vendor/autoload.php';
+```php
+<?php
+require 'vendor/autoload.php';
 
-    $key = 'your-api-key-from-jotform';
-    $client = new JotForm\JotFormClient();
-    $client->setAPIKey($key);
-    $user = new JotForm\Resource\User($client);
+$key = 'your-jotform-api-key-here';
 
-    try {
-        $info = $user->getUser();
-        print_r($info);
-    } catch (\JotForm\Exception\ClientException $e) {
-        echo $e->getMessage() . "\n";
-    }
+$client = new JotForm\JotFormClient();
+$client->setAPIKey($key);
+
+$user = new JotForm\Resource\User($client);
+
+try {
+    $info = $user->getUser();
+    print_r($info);
+} catch (\JotForm\Exception\ClientException $e) {
+    echo $e->getMessage() . "\n";
+}
+```
 
 Here's another example for creating a form:
 
-    require 'vendor/autoload.php';
+```php
+<?php
+require 'vendor/autoload.php';
 
-    $key = 'your-api-key-from-jotform';
-    $client = new JotForm\JotFormClient();
-    $client->setAPIKey($key);
-    $form = new JotForm\Resource\Form($client);
+$key = 'your-jotform-api-key-here';
 
-    try {
-        $myForm = [
-            'questions' => [
-                [
-                    'type' => 'control_head',
-                    'text' => 'Form Title',
-                    'order' => 1,
-                    'name' => 'Header'
-                ],
-                [
-                    'type' => 'control_textbox',
-                    'text' => 'Text Box Title',
-                    'order' => 2,
-                    'name' => 'TextBox',
-                    'validation' => 'None',
-                    'required' => 'No',
-                    'readonly' => 'No',
-                    'size' => 30,
-                    'labelAlign' => 'Auto',
-                    'hint' => 'Hint: Lorem Ipsum'
-                ],
+$client = new JotForm\JotFormClient();
+$client->setAPIKey($key);
+
+$form = new JotForm\Resource\Form($client);
+
+try {
+    $myForm = [
+        'questions' => [
+            [
+                'type' => 'control_head',
+                'text' => 'Form Title',
+                'order' => 1,
+                'name' => 'Header'
             ],
-            'properties' => [
-                'title' => 'My Form',
-                'height' => 600
+            [
+                'type' => 'control_textbox',
+                'text' => 'Text Box Title',
+                'order' => 2,
+                'name' => 'TextBox',
+                'validation' => 'None',
+                'required' => 'No',
+                'readonly' => 'No',
+                'size' => 30,
+                'labelAlign' => 'Auto',
+                'hint' => 'Hint: Lorem Ipsum'
             ],
-            'emails' => [
-                'type' => 'notification',
-                'name' => 'notification',
-                'from' => 'default',
-                'to' => 'noreply@mywebsite.com',
-                'subject' => 'New Submission',
-                'html' => 'false'
-            ]
-        ];
-        $response = $form->createForm($myForm);
-        print_r($response);
-    } catch (\JotForm\Exception\ClientException $e) {
-        echo $e->getMessage() . "\n";
-    }
+        ],
+        'properties' => [
+            'title' => 'My Form',
+            'height' => 600
+        ],
+        'emails' => [
+            'type' => 'notification',
+            'name' => 'notification',
+            'from' => 'default',
+            'to' => 'noreply@mywebsite.com',
+            'subject' => 'New Submission',
+            'html' => 'false'
+        ]
+    ];
+    $response = $form->createForm($myForm);
+    print_r($response);
+} catch (\JotForm\Exception\ClientException $e) {
+    echo $e->getMessage() . "\n";
+}
+```
 
 See [examples](https://github.com/rawswift/jotform-api-php-client/tree/master/examples) folder for more sample scripts.
 
