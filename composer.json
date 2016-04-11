@@ -1,0 +1,24 @@
+{
+    "name": "rawswift/jotform-api-php-client",
+    "description": "JotForm API Client Library for PHP",
+    "license": "MIT",
+    "keywords": ["jotform", "api", "php", "client", "library"],
+    "authors": [
+        {
+            "name": "Ryan Yonzon",
+            "email": "ryanyonzon@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "guzzlehttp/guzzle": "~6.2"
+        },
+    "require-dev": {
+        "phpunit/phpunit": "~4"
+    },
+    "autoload": {
+        "psr-4": {
+            "JotForm\\": "src/"
+        }
+    }
+}
