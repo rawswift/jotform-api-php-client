@@ -19,7 +19,7 @@ Next, run the Composer command to install jotform-api-php-client library:
 
     php composer.phar require rawswift/jotform-api-php-client:dev-master
 
-After installing, you can now use the library by including Composer's autoloader inside your script:
+After installing, simply include the Composer's autoloader (inside your script):
 
     require 'vendor/autoload.php';
 
@@ -85,7 +85,7 @@ Here's another example for creating a form:
                 'html' => 'false'
             ]
         ];
-        $response = $form->create($myForm);
+        $response = $form->createForm($myForm);
         print_r($response);
     } catch (\JotForm\Exception\ClientException $e) {
         echo $e->getMessage() . "\n";
