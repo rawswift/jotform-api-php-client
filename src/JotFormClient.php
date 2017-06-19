@@ -10,7 +10,7 @@ class JotFormClient
     /**
      * JotForm API base URL
      */
-    const API_BASE_PATH = 'http://api.jotform.com';
+    const API_BASE_PATH = 'https://api.jotform.com';
 
     /**
      * @var String $key
