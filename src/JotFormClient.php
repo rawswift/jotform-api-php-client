@@ -13,6 +13,11 @@ class JotFormClient
     const API_BASE_PATH = 'https://api.jotform.com';
 
     /**
+     * JotForm EU API base URL
+     */
+    const API_EU_BASE_PATH = 'https://eu-api.jotform.com';
+
+    /**
      * @var String $key
      */
     private $key = null;
@@ -50,6 +55,16 @@ class JotFormClient
                         'apiKey' => $this->key
                     ]
                 ];
+
+        // Check if account is in EU safe mode
+        $user = new \JotForm\Resource\User($this);
+        $info = $user->getUser();
+        if ($info->responseCode === 301 && strpos($info->location, 'eu-api.jotform.com') !== false) {
+            // Update HTTP client
+            $this->httpClient = new \GuzzleHttp\Client([
+                    'base_uri' => self::API_EU_BASE_PATH,
+                ]);
+        }
     }
 
     /**
